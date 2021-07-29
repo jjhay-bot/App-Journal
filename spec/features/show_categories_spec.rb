@@ -34,8 +34,8 @@ feature 'Show Categories' do
     click_on 'Save Category'
 
     category_edit = Category.order(id: :desc).last
-    expect(category.category).to have_text('Category1 Edited')
-    expect(category.content).to have_text('Sample1 Edited')
+    expect(category_edit.category).to have_text('Category1 Edited')
+    expect(category_edit.content).to have_text('Sample1 Edited')
     
   end
 end
