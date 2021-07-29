@@ -7,8 +7,8 @@ require 'rails_helper'
 # click submit button
 # expect page to have content we submitted
 
-feature 'Editing Categories' do
-  scenario 'can create new categories' do
+feature 'Show Categories' do
+  scenario 'can show categories' do
 
     visit '/categories'
 
@@ -22,10 +22,11 @@ feature 'Editing Categories' do
     expect(page).to have_text('Category1')
     expect(page).to have_text('Sample1')
 
-    expect(category.category).to have_text('Category1 Edited')
-    expect(category.content).to have_text('Sample1 Edited')
+    category = Category.order(id: :desc).last
+    expect(category.category).to have_text('Category1')
+    expect(category.content).to have_text('Sample1')
 
-     visit "/categories/#{category.id}/edit"
+    visit "/categories/#{category.id}/edit"
 
     fill_in 'Category', with: 'Category1 Edited'
     fill_in 'Content', with: 'Sample1 Edited'
@@ -34,6 +35,6 @@ feature 'Editing Categories' do
 
     expect(category.category).to have_text('Category1 Edited')
     expect(category.content).to have_text('Sample1 Edited')
-
+    
   end
 end

@@ -12,7 +12,7 @@ feature 'Creating Categories' do
 
     visit '/categories'
 
-    click_link 'Add Category'
+    click_link 'Ad3d Category'
 
     fill_in 'Category', with: 'Category1'
     fill_in 'Content', with: 'Sample1'
