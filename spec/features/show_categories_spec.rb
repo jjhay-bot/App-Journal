@@ -22,12 +22,10 @@ feature 'Editing Categories' do
     expect(page).to have_text('Category1')
     expect(page).to have_text('Sample1')
 
-    expect(page).to have_text('Category1 Edited')
-    expect(page).to have_text('Sample1 Edited')
+    expect(category.category).to have_text('Category1 Edited')
+    expect(category.content).to have_text('Sample1 Edited')
 
- 
-    category = Category.order(id: :desc).last
-    visit "/categories/#{category.id}/edit"
+     visit "/categories/#{category.id}/edit"
 
     fill_in 'Category', with: 'Category1 Edited'
     fill_in 'Content', with: 'Sample1 Edited'
