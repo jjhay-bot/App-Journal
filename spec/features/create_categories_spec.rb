@@ -17,10 +17,10 @@ feature 'Creating Categories' do
     fill_in 'Category', with: 'Category1'
     fill_in 'Content', with: 'Sample1'
 
-    click_link 'Add Category'
+    click_on 'Save Category'
 
     expect(page).to have_text('Category1')
     expect(page).to have_text('Sample1')
-    
+
   end
 end
