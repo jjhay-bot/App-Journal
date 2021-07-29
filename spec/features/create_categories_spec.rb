@@ -10,7 +10,7 @@ require 'rails_helper'
 feature 'Creating Categories' do
   scenario 'can create new categories' do
 
-    visit '/category'
+    visit '/categories'
 
     click_link 'Create Category'
 
