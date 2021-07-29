@@ -12,13 +12,15 @@ feature 'Creating Categories' do
 
     visit '/categories'
 
-    click_link 'Create Category'
+    click_link 'Add Category'
 
-    fill_in 'category_name', with: 'Sample'
+    fill_in 'Category', with: 'Category1'
+    fill_in 'Content', with: 'Sample1'
 
     click_link 'Add Category'
 
-    expect(page).to have_text('Sample')
-
+    expect(page).to have_text('Category1')
+    expect(page).to have_text('Sample1')
+    
   end
 end
