@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.feature "CreateTasks", type: :feature do
   # system do
   let(:category) { Category }
+  before :each do
+    category.create!(category:'This is the category name', content: 'This is the category content')
+  end
     describe 'Creates new task' do
       scenario 'redirects to show category page' do
-        category.create!(category:'This is the category name', content: 'This is the category content')
         visit categories_path
         expect(page).to have_current_path categories_path
         expect(page).to have_content('This is the category name')
@@ -13,7 +15,6 @@ RSpec.feature "CreateTasks", type: :feature do
         click_link 'Show'
       end
       scenario 'displays category details' do
-        category.create!(category:'This is the category name', content: 'This is the category content')
         category = Category.order(id: :desc).last
         visit "/categories/#{category.id}"
         expect(page).to have_current_path category_path(id: category.id)
