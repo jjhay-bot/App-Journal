@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature "CreateTasks", type: :feature do
-  system do
+  # system do
     let!(:category) { Category.new }
-  
     describe 'Creates new task' do
       it 'redirects to new task page' do
-        category.save(name: "This is the category name", description: "This is the category description") 
+        category.category = 'This is the category name'
+        category.content = 'This is the category content'
+        category.save
         visit categories_path
         expect(page).to have_current_path categories_path
         expect(page).to have_content('This is the category name')
@@ -37,5 +38,5 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(task.description).to eq('This is the task description')
       end
     end
-  end
+  # end
 end
