@@ -5,6 +5,8 @@ RSpec.describe "EditingCategoryTaks" do
 #     driven_by(:rack_test)
 #   end
   it 'edits task and displays index page' do
+    category = Category.order(id: :desc).last
+    task = category.tasks.order(id: :desc).last
     
     visit "/categories/#{category.id}/task/#{task}"
 
