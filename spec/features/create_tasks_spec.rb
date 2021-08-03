@@ -2,37 +2,39 @@ require 'rails_helper'
 
 RSpec.feature "CreateTasks", type: :feature do
   # system do
-    let!(:category) { Category.new }
+  let(:category) { Category }
     describe 'Creates new task' do
-      it 'redirects to new task page' do
-        category.category = 'This is the category name'
-        category.content = 'This is the category content'
-        category.save
+      scenario 'redirects to show category page' do
+        category.create!(category:'This is the category name', content: 'This is the category content')
         visit categories_path
         expect(page).to have_current_path categories_path
         expect(page).to have_content('This is the category name')
         expect(page).to have_content('Show')
-        click_on 'Show'
+        click_link 'Show'
       end
-      it 'displays category details' do
-        expect(page).to have_current_path new_category_task_path
+      scenario 'displays category details' do
+        category.create!(category:'This is the category name', content: 'This is the category content')
+        category = Category.order(id: :desc).last
+        visit "/categories/#{category.id}"
+        expect(page).to have_current_path category_path(id: category.id)
         expect(page).to have_content('This is the category name')
-        expect(page).to have_content('This is the category description')
+        expect(page).to have_content('This is the category content')
       end
-      it 'successfully creates a new task' do
+      scenario 'successfully creates a new task' do
+        expect(page).to have_content('Tasks')
           within 'form' do
-            fill_in 'name', with: 'This is the task name'
-            fill_in 'descripton', with: 'This is the task description'
+            fill_in 'category', with: 'This is the task name'
+            fill_in 'content', with: 'This is the task description'
             click_on 'Create Task'
           end
       end
-      it 'displays resulting task' do
+      scenario 'displays resulting task' do
         within 'body' do
           expect(page).to have_content('This is the task name')
           expect(page).to have_content('This is the task description')
         end
       end
-      it 'confirms task was saved to database' do
+      scenario 'confirms task was saved to database' do
         task = Task.order("id").last
         expect(task.name).to eq('This is the task name')
         expect(task.description).to eq('This is the task description')
