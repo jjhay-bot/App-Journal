@@ -1,14 +1,3 @@
-<%= form_with model: @tasks do |f| %>
-    <div >
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "Task name" %>
-    </div>
-    <div class="form-group mt-2">
-    <%= f.label :description, "Content" %>
-    <%= f.text_area :description, placeholder: "Task description" %>
-    </div>
-    <div >
-    <%= f.submit %>
-    </div>
-<% end %>
+<%= render 'tasks/form' %>
 
+<%= link_to 'Show', @category %> |

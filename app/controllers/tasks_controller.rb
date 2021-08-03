@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @category = Category.find(category_params[:id])
+    @tasks = @category.tasks.all
   end
 
   def new
@@ -8,6 +9,8 @@ class TasksController < ApplicationController
   end
 
   def show
+    # @categorys = Task.find(category_params[:category_id])
+    # @task = @categorys.task.find(category_params[:id]).build
   end
 
   def edit
@@ -15,10 +18,10 @@ class TasksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: "Category was successfully updated." }
+      if  @category.tasks.update(task_params)
+        format.html { redirect_to :show, notice: "Category was successfully updated." }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity }
       end
     end
   end
