@@ -1,2 +1,29 @@
 <h1>Task#new</h1>
 <p>Find me in app/views/task/new.html.erb</p>
+
+<%= form_with model: [@category, @task], local: true do |f| %>
+    <p>
+        <% if @task.errors.any? %>
+            <ul>
+                <% @task.errors.full_messages.each do |message| %>
+                    <li><%= message  %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
+
+    <p>
+        <b><%= f.label :name, 'Task name:' %></b>
+        <%= f.text_field :name, placeholder: 'Task', class: 'name' %>
+    </p>
+
+    <p>
+        <b><%= f.label :description, 'Task description:' %></b>
+        <%= f.text_field :description, placeholder: 'Description', class: 'description' %>
+    </p>
+
+    <p>
+        <%= f.submit "Add Task"  %>
+    </p>
+
+<% end %>

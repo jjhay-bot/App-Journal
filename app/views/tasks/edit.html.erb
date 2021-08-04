@@ -1,3 +1,29 @@
-<%= render 'tasks/form' %>
+<h1>Task#edit</h1>
+<p>Find me in app/views/task/new.html.erb</p>
 
-<%= link_to 'Show', @category %> |
+<%= form_with model: [@category], local: true do |f| %>
+    <p>
+        <% if @category.errors.any? %>
+            <ul>
+                <% @task.errors.full_messages.each do |message| %>
+                    <li><%= message  %></li>
+                <% end %>
+            </ul>
+        <% end %>
+    </p>
+
+    <p>
+        <b><%= f.label :name, 'Task name:' %></b>
+        <%= f.text_field :name, placeholder: 'Task', class: '' %>
+    </p>
+
+    <p>
+        <b><%= f.label :description, 'Task description:' %></b>
+        <%= f.text_field :description, placeholder: 'Description', class: '' %>
+    </p>
+
+    <p>
+        <%= f.submit "Update Task"  %>
+    </p>
+
+<% end %>
