@@ -25,7 +25,7 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(page).to have_content('Tasks')
         click_on 'Add new task'
       end
-      scenario 'successfully creates a new task' do
+      scenario 'successfully creates a new task and displays resulting category' do
         visit "/categories/#{@category.id}/tasks/new"
         expect(page).to have_current_path new_category_task_path(@category.id)
         within 'form' do
@@ -33,12 +33,10 @@ RSpec.feature "CreateTasks", type: :feature do
           fill_in 'description', with: 'This is the task description'
           click_on 'Add Task'
         end
-      end
-      scenario 'displays resulting task' do
-        within 'body' do
-          expect(page).to have_content('This is the task name')
-          expect(page).to have_content('This is the task description')
-        end
+        expect(page).to have_current_path category_path(@category.id)
+        expect(page).to have_content('Tasks')
+        expect(page).to have_content('This is the task name')
+        expect(page).to have_content('This is the task description')
       end
       scenario 'confirms task was saved to database' do
         task = Task.order("id").last
