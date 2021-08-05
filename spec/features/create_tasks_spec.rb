@@ -22,10 +22,12 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(page).to have_content('This is the category content')
       end
       scenario 'successfully creates a new task' do
+        category = Category.order(id: :desc).last
+        visit "/categories/#{category.id}"
         expect(page).to have_content('Tasks')
           within 'form' do
-            fill_in 'category', with: 'This is the task name'
-            fill_in 'content', with: 'This is the task description'
+            fill_in 'name', with: 'This is the task name'
+            fill_in 'description', with: 'This is the task description'
             click_on 'Create Task'
           end
       end
