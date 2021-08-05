@@ -25,7 +25,7 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(page).to have_content('Tasks')
         click_on 'Add new task'
       end
-      scenario 'successfully creates a new task' do
+      scenario 'successfully creates a new task and displays resulting category' do
         visit "/categories/#{@category.id}/tasks/new"
         expect(page).to have_current_path new_category_task_path(@category.id)
         within 'form' do
@@ -33,6 +33,20 @@ RSpec.feature "CreateTasks", type: :feature do
           fill_in 'description', with: 'This is the task description'
           click_on 'Add Task'
         end
+<<<<<<< HEAD:spec/features/create_tasks_spec.rb
+        expect(page).to have_current_path category_path(@category.id)
+        expect(page).to have_content('Tasks')
+        expect(page).to have_content('This is the task name')
+        expect(page).to have_content('This is the task description')
+      end
+      scenario 'confirms task was saved to database' do
+        @category.tasks.create!(name:"This is the task name", description:"This is the task description")
+        task = Task.order("id").last
+        expect(task.name).to eq('This is the task name')
+        expect(task.description).to eq('This is the task description')
+      end
+<<<<<<< HEAD
+=======
       end
       # scenario 'displays resulting task' do
       #   within 'body' do
@@ -45,5 +59,8 @@ RSpec.feature "CreateTasks", type: :feature do
       #   expect(task.name).to eq('This is the task name')
       #   expect(task.description).to eq('This is the task description')
       # end
+>>>>>>> main:spec/features/task/create_tasks_spec.rb
+=======
+>>>>>>> c4911593d82a68a0b86aa4165b8fe1b2f815f41b
     end
 end
