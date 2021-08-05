@@ -6,9 +6,20 @@
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <!-- content => Description  -->
+  <strong>Description:</strong>   
   <%= @category.content %>
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Back', categories_path %> |
+<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+
+<br><br><hr><br>
+
+<!-- <h2>RENDER TASK/INDEX here </h2> -->
+<%= render 'tasks/task', category: @category %>
+
+<br>
+<%= link_to 'Add new task',  new_category_task_path(@category) %>
