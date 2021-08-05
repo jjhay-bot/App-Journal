@@ -8,6 +8,10 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    @tasks = @category.tasks
+    @task = @category.tasks
+
+
   end
 
   # GET /categories/new

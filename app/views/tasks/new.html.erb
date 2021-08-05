@@ -1,7 +1,7 @@
 <h1>Task#new</h1>
 <p>Find me in app/views/task/new.html.erb</p>
 
-<%= form_with model: [@category, @task], local: true do |f| %>
+<%= form_with model: [@category, @task ], local: true do |f| %>
     <p>
         <% if @task.errors.any? %>
             <ul>
