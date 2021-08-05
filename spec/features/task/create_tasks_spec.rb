@@ -38,5 +38,11 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(page).to have_content('This is the task name')
         expect(page).to have_content('This is the task description')
       end
+      scenario 'confirms task was saved to database' do
+        @category.tasks.create!(name:"This is the task name", description:"This is the task description")
+        task = Task.order("id").last
+        expect(task.name).to eq('This is the task name')
+        expect(task.description).to eq('This is the task description')
+      end
     end
 end
