@@ -45,6 +45,7 @@ RSpec.feature "CreateTasks", type: :feature do
         expect(task.name).to eq('This is the task name')
         expect(task.description).to eq('This is the task description')
       end
+<<<<<<< HEAD
 =======
       end
       # scenario 'displays resulting task' do
@@ -59,5 +60,7 @@ RSpec.feature "CreateTasks", type: :feature do
       #   expect(task.description).to eq('This is the task description')
       # end
 >>>>>>> main:spec/features/task/create_tasks_spec.rb
+=======
+>>>>>>> c4911593d82a68a0b86aa4165b8fe1b2f815f41b
     end
 end
