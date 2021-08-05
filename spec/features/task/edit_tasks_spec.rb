@@ -16,12 +16,17 @@ RSpec.describe "EditingCategoryTaks" do
     visit "/categories/#{category_last.id}/tasks/#{task_last.id}/edit"
 
     fill_in "Name",	with: "Edited name" 
-    fill_in "description",	with: "Edited description" 
+    fill_in 'Description', with: 'Edited Description'
+    # fill_in "Description",	with: "Edited description" 
 
-    click_on 'Submit'
+    click_on 'Update Task'
 
     expect(page).to  have_content('Edited name')
-    expect(page).to  have_content('Edited description')
+    expect(page).to  have_content('Edited Description')
     
+    expect(task.last.name).to  have_content('Edited name')
+    expect(task.last.description).to  have_content('Edited Description')
+
   end
 end
+

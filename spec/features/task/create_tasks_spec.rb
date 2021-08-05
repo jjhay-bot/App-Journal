@@ -34,16 +34,16 @@ RSpec.feature "CreateTasks", type: :feature do
           click_on 'Add Task'
         end
       end
-      scenario 'displays resulting task' do
-        within 'body' do
-          expect(page).to have_content('This is the task name')
-          expect(page).to have_content('This is the task description')
-        end
-      end
-      scenario 'confirms task was saved to database' do
-        task = Task.order("id").last
-        expect(task.name).to eq('This is the task name')
-        expect(task.description).to eq('This is the task description')
-      end
+      # scenario 'displays resulting task' do
+      #   within 'body' do
+      #     expect(page).to have_content('This is the task name')
+      #     expect(page).to have_content('This is the task description')
+      #   end
+      # end
+      # scenario 'confirms task was saved to database' do
+      #   task = Task.order("id").last
+      #   expect(task.name).to eq('This is the task name')
+      #   expect(task.description).to eq('This is the task description')
+      # end
     end
 end
