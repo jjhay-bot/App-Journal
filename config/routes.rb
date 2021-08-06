@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :covers
+  # get 'cover_image_links/index'
+  # get 'cover_image_links/new'
   resources :categories do
     resources :tasks
   end
