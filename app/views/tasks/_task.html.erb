@@ -1,11 +1,13 @@
 <h1>Tasks</h1>
-<%=  @tasks.name %>
+<%=  @task.name %>
 
 <table>
   <thead>
     <tr>
       <th>Task</th>
       <th>Description</th>
+      <!-- <th>Status</th> -->
+      <th>Schedule</th>
       <th>ID</th>
       <th colspan="3"></th>
     </tr>
@@ -16,6 +18,8 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.description %></td>
+        <!-- <td><%= task.status %></td> -->
+        <td><%= task.schedule %></td>
         <td><%= task.id %></td>
         <td><%= link_to 'Show', [@category, task] %></td> 
         <td><%= link_to "Edit", [:edit, @category, task] %></td> 
