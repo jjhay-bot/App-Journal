@@ -10,7 +10,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1 or /categories/1.json
   def show
     @task = @category.tasks
-
   end
 
   # GET /categories/new
