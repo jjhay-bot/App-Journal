@@ -11,8 +11,6 @@ class CategoriesController < ApplicationController
   def show
     @tasks = @category.tasks
     @task = @category.tasks
-
-
   end
 
   # GET /categories/new
@@ -27,7 +25,8 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
-
+    @category.user = current_user
+    
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: "Category was successfully created." }
