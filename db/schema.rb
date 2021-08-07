@@ -22,12 +22,20 @@ ActiveRecord::Schema.define(version: 2021_08_06_131739) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "covers", force: :cascade do |t|
+    t.string "image_link"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "status"
+    t.date "schedule"
     t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 

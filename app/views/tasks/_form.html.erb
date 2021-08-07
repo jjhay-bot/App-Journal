@@ -6,9 +6,16 @@
     </p>
     <p class="form-group mt-2">
 
-    <strong><%= f.label :description, "Description" %></strong>
-    <%= f.text_area :description, placeholder: "Task description" %>
+    <strong>
+        <%= f.label :description, "Description" %></strong>
+        <%= f.text_area :description, placeholder: "Task description" %>
     </p>
+
+    <strong>
+        <%= f.label :schedule, "Schedule" %></strong>
+        <%= f.text_area :schedule, placeholder: "Date" %>
+    </p>
+
     <p >
         <%= f.submit "Update Task" %>
     </p>

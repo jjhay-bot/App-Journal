@@ -3,7 +3,10 @@ class TasksController < ApplicationController
 
   def index
     # @category = Category.find(task_params[:category_id])
-    @tasks = @category.tasks
+    # @tasks = @category.tasks
+
+    @category = Category.includes(:tasks).find(params[:category_id])
+    @tasks = @category.tasks.all.where(:schedule => (Date.today))
   end
 
   def show
@@ -57,7 +60,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :description, :category_id)
+    params.require(:task).permit(:name, :description, :category_id, :schedule)
   end
 
 end

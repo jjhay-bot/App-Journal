@@ -3,11 +3,6 @@
   <b>ID: <%= task.category_id %></b> <br>
   Task: <td><%= task.name %></td> <br>
   Schedule: <td><%= task.schedule %></td>
-  <td><%= link_to 'Show', [@category, task] %></td>
-  <td><%= link_to "Edit", [:edit, @category, task] %></td>
-
-
-
 </tr>
 <br>
 <% end %>

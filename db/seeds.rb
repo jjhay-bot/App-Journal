@@ -9,13 +9,13 @@
 
 m1 = Category.create(category: 'School', content: 'anything related to school activities ')
 
-Task.create(name: 'Meeting', description: 'Attend meeting at 7pm today', category_id: m1.id)
-Task.create(name: 'Project Proposal', description: 'Deadline of project proposal tomorrow', category_id: m1.id)
-Task.create(name: 'Sample Task', description: 'Taskdesc', category_id: m1.id)
+Task.create(name: 'Meeting', description: 'Attend meeting at 7pm today', category_id: m1.id, schedule: Date.today )
+Task.create(name: 'Project Proposal', description: 'Deadline of project proposal tomorrow', category_id: m1.id, schedule: Date.today+1.day)
+Task.create(name: 'Sample Task', description: 'Taskdesc', category_id: m1.id, schedule: Date.today+1.day)
 
 
 m2 = Category.create(category: 'Office', content: 'anything related to office work')
 
-Task.create(name: 'Email', description: 'Remind product delivery', category_id: m2.id)
-Task.create(name: 'Checking', description: 'Check progress of new items', category_id: m2.id)
-Task.create(name: 'Category Sample', description: 'Category desc', category_id: m2.id)
+Task.create(name: 'Email', description: 'Remind product delivery', category_id: m2.id, schedule: Date.today)
+Task.create(name: 'Checking', description: 'Check progress of new items', category_id: m2.id, schedule: Date.today+1.day)
+Task.create(name: 'Category Sample', description: 'Category desc', category_id: m2.id, schedule: Date.today+1.day)
