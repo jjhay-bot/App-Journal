@@ -6,16 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User.new(email: 'example@gmail.com', encrypted_password: '123456')
+# visit new_user_session_path
+# fill_in 'Email', with: 'example@gmail.com'
+# fill_in 'Password', with: '123456'
+# click_on 'Log in'
+# user1 = User.create!(email: "user1@mail.com",password: "123qwe", password_confirmation: "123qwe")
 
-m1 = Category.create(category: 'School', content: 'anything related to school activities ')
+# m1 = Category.create(category: 'School', content: 'anything related to school activities ')
 
-Task.create(name: 'Meeting', description: 'Attend meeting at 7pm today', category_id: m1.id, status: 'pending', schedule: '2021-08-06' )
-Task.create(name: 'Project Proposal', description: 'Deadline of project proposal tomorrow', category_id: m1.id, status: 'pending', schedule: '2021-08-07' )
-Task.create(name: 'Sample Task', description: 'Taskdesc', category_id: m1.id, status: 'pending', schedule: '2021-08-07' )
+# Task.create(name: 'Meeting', description: 'Attend meeting at 7pm today', category_id: m1.id, schedule: Date.today )
+# Task.create(name: 'Project Proposal', description: 'Deadline of project proposal tomorrow', category_id: m1.id, schedule: Date.today+1.day)
+# Task.create(name: 'Sample Task', description: 'Taskdesc', category_id: m1.id, schedule: Date.today+1.day)
+
+# m2 = Category.create(category: 'Office', content: 'anything related to office work')
+
+# Task.create(name: 'Email', description: 'Remind product delivery', category_id: m2.id, schedule: Date.today)
+# Task.create(name: 'Checking', description: 'Check progress of new items', category_id: m2.id, schedule: Date.today+1.day)
+# Task.create(name: 'Category Sample', description: 'Category desc', category_id: m2.id, schedule: Date.today+1.day)
 
 
-m2 = Category.create(category: 'Office', content: 'anything related to office work')
+# SAMPLES input manually
 
-Task.create(name: 'Email', description: 'Remind product delivery', category_id: m2.id, status: 'pending', schedule: '2021-08-08')
-Task.create(name: 'Checking', description: 'Check progress of new items', category_id: m2.id, status: 'pending', schedule: '2021-08-08')
-Task.create(name: 'Category Sample', description: 'Category desc', category_id: m2.id, status: 'ongoing', schedule: '2021-08-08')
+# user1 = User.create!(email: "user1@mail.com",password: "123qwe", password_confirmation: "123qwe")
+
+# m1 = Category.create(category: 'School', content: 'anything related to school activities ')
+
