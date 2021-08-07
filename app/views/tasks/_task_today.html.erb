@@ -1,0 +1,8 @@
+<% @tasks.each do |task| %>
+<tr>
+  <b>ID: <%= task.category_id %></b> <br>
+  Task: <td><%= task.name %></td> <br>
+  Schedule: <td><%= task.schedule %></td>
+</tr>
+<br>
+<% end %>
