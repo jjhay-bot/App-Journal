@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+    @categories = Category.all.where(:user_id => current_user)
     @tasks = Task.all.where(:schedule => (Date.today))
   end
 
