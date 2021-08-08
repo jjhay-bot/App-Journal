@@ -1,41 +1,29 @@
 require 'rails_helper'
 
-# Feature > scenario > execution
-# visit root route
-# click create post link
-# fill in form with needed info (title, content)
-# click submit button
-# expect page to have content we submitted
+RSpec.describe "CreatingCategories", type: :system do
 
-feature 'Show Categories' do
-  scenario 'can show categories' do
+  before do
+    driven_by(:rack_test)
+  end
 
-    visit '/categories'
+  User.destroy_all
+  Category.destroy_all
+  before :each do
+    # Devise gem rspec helper
+    user = User.create(:email => 'test123@example.com', :password => 'f4k3p455w0rd')
+    login_as(user, :scope => :user)
+    Category.create(category: "Category1", content: "Sample1", user_id: user.id)
+  end
 
-    click_link 'Add Category'
+  it 'show last category added' do
 
-    fill_in 'Category', with: 'Category1'
-    fill_in 'Content', with: 'Sample1'
-
-    click_on 'Save Category'
+    visit "/categories/#{Category.last.id}"
+    
+    expect(Category.last.category).to have_text('Category1')
+    expect(Category.last.content).to have_text('Sample1')
 
     expect(page).to have_text('Category1')
     expect(page).to have_text('Sample1')
-
-    category = Category.order(id: :desc).last
-    expect(category.category).to have_text('Category1')
-    expect(category.content).to have_text('Sample1')
-
-    visit "/categories/#{category.id}/edit"
-
-    fill_in 'Category', with: 'Category1 Edited'
-    fill_in 'Content', with: 'Sample1 Edited'
-
-    click_on 'Save Category'
-
-    category_edit = Category.order(id: :desc).last
-    expect(category_edit.category).to have_text('Category1 Edited')
-    expect(category_edit.content).to have_text('Sample1 Edited')
-    
   end
+
 end
