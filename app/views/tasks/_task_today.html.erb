@@ -1,8 +1,11 @@
-<% @tasks.each do |task| %>
-<tr>
-  <b>ID: <%= task.category_id %></b> <br>
-  Task: <td><%= task.name %></td> <br>
-  Schedule: <td><%= task.schedule %></td>
-</tr>
-<br>
-<% end %>
+<div class="d-flex">
+  <% @tasks.each do |task| %>
+    <div class="card card-width-18">
+      <div class="card-body ">
+        <div class="card-title"><%= task.name %></div>
+        <div class="card-text text-muted"><%= task.description %></div>
+      </div>
+      <div class="card-footer text-muted"><%= task.schedule.strftime("%B %-d %Y") %></div>
+    </div>
+  <% end %>
+</div>
