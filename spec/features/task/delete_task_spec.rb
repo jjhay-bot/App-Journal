@@ -1,24 +1,28 @@
 require 'rails_helper'
 
-RSpec.describe "EditingCategoryTaks" do
-  # system do
-  let(:task) { Task }
-
-  before :each do
-    category = Category.create!(category:'Added category', content: 'Added category content')
-    category.tasks.create!(name:'Sample task', description: 'Sample task description')
+RSpec.describe "EditingCategoryTasks", type: :system do
+  before do
+    driven_by(:rack_test)
   end
 
-  it 'edits task and displays index page' do
-    category_last = Category.order(id: :desc).last
-    task_last = category_last.tasks.order(id: :desc).last
+  User.destroy_all
+  before :each do
+    # Devise gem rspec helper
+    @user = User.create(:email => 'test123@example.com', :password => 'f4k3p455w0rd')
+    login_as(@user, :scope => :user)
+    @category = Category.create(category:'This is the category name', content: 'This is the category content', user_id: @user.id)
+    @category.tasks.create(name:"This is the task name", description:"This is the task description")
+  end
 
-    visit "/categories/#{category_last.id}/tasks/#{task_last.id}"
+  it 'delete last task of last category created' do
+
+    visit "/categories/#{Category.last.id}/tasks/#{Task.last.id}"
 
     click_on 'Destroy'
 
     expect(page).to  have_content('Product was successfully destroyed')
     
   end
+
 end
 

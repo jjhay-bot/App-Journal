@@ -1,15 +1,24 @@
 <%#= form_with model: [@task] do |f| %>
 <%= form_with model: [@category, @task], local: true do |f| %>
-    <p >
+
+    <p class="form-group mt-2">
         <strong><%= f.label :name %></strong>
         <%= f.text_field :name %>
     </p>
-    <p class="form-group mt-2">
 
-    <strong><%= f.label :description, "Description" %></strong>
-    <%= f.text_area :description, placeholder: "Task description" %>
+    <p class="form-group mt-2">
+        <strong><%= f.label :description, "Description" %></strong>
+        <%= f.text_area :description, placeholder: "Task description" %>
     </p>
+
+    <p class="form-group mt-2">
+        <strong><%= f.label :schedule, "Schedule" %></strong>
+        <%= f.text_field :schedule, placeholder: "YYYY-MM-DD", type: "date" %>
+    </p>
+    <p >
+
     <p >
         <%= f.submit "Update Task" %>
     </p>
+
 <% end %>

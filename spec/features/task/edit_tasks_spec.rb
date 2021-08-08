@@ -1,32 +1,40 @@
 require 'rails_helper'
 
-RSpec.describe "EditingCategoryTaks" do
-  # system do
-  let(:task) { Task }
-
-  before :each do
-    category = Category.create!(category:'Sample category name', content: 'Sample category content')
-    category.tasks.create!(name:'Sample task', description: 'Sample task description')
+RSpec.describe "EditingCategoryTasks", type: :system do
+  before do
+    driven_by(:rack_test)
   end
 
-  it 'edits task and displays index page' do
-    category_last = Category.order(id: :desc).last
-    task_last = category_last.tasks.order(id: :desc).last
+  User.destroy_all
+  before :each do
+    # Devise gem rspec helper
+    @user = User.create(:email => 'test123@example.com', :password => 'f4k3p455w0rd')
+    login_as(@user, :scope => :user)
+    @category = Category.create(category:'This is the category name', content: 'This is the category content', user_id: @user.id)
+    @category.tasks.create(name:"This is the task name", description:"This is the task description")
+  end
 
-    visit "/categories/#{category_last.id}/tasks/#{task_last.id}/edit"
+  it 'edits last task of last category created' do
+
+    visit "/categories/#{Category.last.id}/tasks/#{Task.last.id}/edit"
 
     fill_in "Name",	with: "Edited name" 
     fill_in 'Description', with: 'Edited Description'
+    fill_in 'Schedule', with: '2021-08-09'
+
     # fill_in "Description",	with: "Edited description" 
 
     click_on 'Update Task'
 
-    expect(page).to  have_content('Edited name')
+    expect(page).to  have_text("Edited name" )
     expect(page).to  have_content('Edited Description')
-    
-    expect(task.last.name).to  have_content('Edited name')
-    expect(task.last.description).to  have_content('Edited Description')
+    expect(page).to  have_content('2021-08-09')
 
+    expect(Task.last.name).to  have_content('Edited name')
+    expect(Task.last.description).to  have_content('Edited Description')
+    expect(Task.last.schedule).to  have_content('2021-08-09')
+    
   end
+
 end
 
