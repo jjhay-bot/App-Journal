@@ -1,11 +1,21 @@
 require 'rails_helper'
 
 RSpec.feature "ShowTasks", type: :feature do
+
   let(:category) { Category }
-  before :each do
-    @category = Category.create!(category:'This is the category name',content:'This is the category content')
+  let(:user) { User }
+
+  before :all do
+    @user = User.destroy_all
+    @user = FactoryBot.create(:user)
+    @category = Category.create!(category:'This is the category name',content:'This is the category content', user_id: @user.id)
     @category.tasks.create!(name:"This is the task name", description:"This is the task description")
   end
+
+  before :each do
+    login_as(@user, :scope => :user)
+  end
+
   describe 'Shows task' do
     scenario 'displays task' do
       visit "/categories/#{@category.id}/tasks"
