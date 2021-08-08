@@ -1,10 +1,19 @@
 require 'rails_helper'
 
 RSpec.feature "CreateTasks", type: :feature do
+
   let(:category) { Category }
   let(:task) { Task }
+  let(:user) { User}
+
+  before :all do
+    @user = User.destroy_all
+    @user = FactoryBot.create(:user)
+    @category = Category.create!(category:'This is the category name', content: 'This is the category content', user_id: @user.id)
+  end
+
   before :each do
-    @category = Category.create!(category:'This is the category name', content: 'This is the category content')
+    login_as(@user, :scope => :user)
   end
     describe 'Creates new task' do
       scenario 'redirects to show category page' do
