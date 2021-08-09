@@ -8,10 +8,23 @@
 .devise-main-wrapper {
   display: flex;
   align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: -10vh;
+  height:90vh ;
 }
 
 .card-width-18 {
   width: 18rem;
+}
+
+.card-footer {
+  background-color: rgba(37, 34, 34, 0.125);
+}
+
+.cover {
+  max-width: 950px;
+}
+
+.cover_image {
+  height:60vmin;
+  border-radius: 12.5px / 10px;
 }

@@ -1,19 +1,29 @@
-<%= render "layouts/nav" %>
-<p id="notice" class="ms-4 mt-4"><%= notice %></p>
-<h2 class="ms-4">Today's Tasks:</h2>
-<%= render 'tasks/task_today' %>
-<h3 class="ms-4 mt-4">Categories</h3>
-<div class="d-flex">
-  <% @categories.each do |category| %>
-    <div class="card card-width-18 ms-4">
-      <div class="card-body">
-        <h5 class="card-title"><%= category.category %></h5>
-        <p class="card-text"><%= category.content %></p>
-        <%= link_to 'Show', category, class: "btn btn-outline-primary btn-sm" %>
-      </div>
+<div class="row g-0">
+  <div class="col-sm-6 col-md-10">
+    <%= render "layouts/nav" %>
+    <p id="notice" class="ms-4"><%= notice %></p>
+    <h2 class="ms-4">Today's Tasks:</h2>
+    <%= render 'tasks/task_today' %>
+    </p>
+  </div>
+  
+  <div class="col-6 col-md-1">
+    <br><br><br>
+    <h3 class="ms-4 mt-4">Categories</h3>
+    <div class="d-flex">
+      <% @categories.each do |category| %>
+        <div class="card card-width-18 ms-4">
+          <div class="card-body">
+            <h5 class="card-title"><%= category.category %></h5>
+            <p class="card-text"><%= category.content %></p>
+            <%= link_to 'Show', category, class: "btn btn-outline-primary btn-sm" %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
-<br>
-<%= link_to 'Add Category', new_category_path, class: "btn btn-primary ms-4" %>
+    
+  <br>
+  <%= link_to 'Add Category', new_category_path, class: "btn btn-primary ms-4" %>
 
+  </div>
+</div>
