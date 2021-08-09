@@ -1,7 +1,8 @@
 <%= render "layouts/nav" %>
 <p id="notice" class="ms-4"><%= notice %></p>
 
-<div class="d-flex justify-content-between">
+
+<div class="d-flex justify-content-between category_small">
   <div d-flex>
     <div class="ms-4 row">
       <label class="col-form-label"><h4>Category:</h4></label>
@@ -12,7 +13,7 @@
       <label class="col-form-label"><h4>Description</h4></h4></label>
       <div class="col"><%= @category.content %></div>
     </div>
-  
+  <br>
   </div>
   <div class="form-field mx-4">
     <%= link_to 'Edit', edit_category_path(@category),class: "btn btn-outline-primary" %> 
