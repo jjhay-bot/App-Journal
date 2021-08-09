@@ -1,24 +1,48 @@
-<%#= form_with model: [@task] do |f| %>
-<%= form_with model: [@category, @task], local: true do |f| %>
+<%= render "layouts/nav" %> 
+<br>
 
-    <p class="form-group mt-2">
-        <strong><%= f.label :name %></strong>
-        <%= f.text_field :name %>
-    </p>
+<div class="d-flex justify-content-center">
+    <h2 class="mx-4 mt-4">Edit Task</h2>
+</div>
 
-    <p class="form-group mt-2">
-        <strong><%= f.label :description, "Description" %></strong>
-        <%= f.text_area :description, placeholder: "Task description" %>
-    </p>
+</div>
 
-    <p class="form-group mt-2">
-        <strong><%= f.label :schedule, "Schedule" %></strong>
-        <%= f.text_field :schedule, placeholder: "YYYY-MM-DD", type: "date" %>
+<%= form_with model: [@category, @task ], local: true do |f| %>
+    <p class="d-flex justify-content-center">
+        <% if @task.errors.any? %>
+            <ul>
+                <% @task.errors.full_messages.each do |message| %>
+                    <li><%= message  %></li>
+                <% end %>
+            </ul>
+        <% end %>
     </p>
+    <div class="form-signin mt-4 center_this">
+
     <p >
+        <div>
+            <b><%= f.label :name, 'Task name:', class:"form-label" %></b>
+        </div>
+        <%= f.text_field :name, placeholder: 'Task', class: 'name' ,class:"form-control"%>
+    </p>
+
+    <p>
+        <b><%= f.label :description, 'Task description:', class:"form-label" %></b>
+        <%= f.text_field :description, placeholder: 'Description', class:"form-control" %>
+    </p>
+
+    <p>
+        <b><%= f.label :schedule, 'Schedule:', class:"form-label" %></b>
+        <%= f.text_field :schedule, placeholder: 'YYYY-MM-DD', class:"form-control", type: "date" %>
+    </p>
 
     <p >
-        <%= f.submit "Update Task" %>
+        <div class="d-flex justify-content-center" >
+            <%= form.submit 'Update Task', class: "btn btn-primary mt-4"%>
+        </div>
     </p>
 
 <% end %>
+
+ 
+

@@ -1,8 +1,8 @@
 <%= render "layouts/nav" %>
-<h1>Task#edit</h1>
-<p>Find me in app/views/task/new.html.erb</p>
 
 <%= render 'form', categories: @category %>
 
-<%= link_to 'Back', @category %>
 
+<div class="d-flex justify-content-center">
+    <%= link_to 'Back',  @category ,class: "btn btn-outline-secondary"%>
+</div>
