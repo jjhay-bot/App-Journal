@@ -8,17 +8,19 @@
   </div>
 
   <div class="col-6 col-md-1 category_padding width_full">
-    <h3 class="ms-4 mt-4">Categories</h3>
+    <h3 class="my-4 category_title"><strong><u>Categories</u></strong></h3>
     <div class="container">
       <div class="d-flex justify-content-center">
-        <div class="d-flex">
-          <div class="container category_side">
+
+        <div class="d-flex ">
+          <div class="container category_below" >
             <% @categories.each do |category| %>
-              <div class="card card-width-18 ms-4 category_side">
-                <div class="card-body ">
-                  <h5 class="card-title"><%= category.category %></h5>
-                  <p class="card-text"><%= category.content %></p>
+              <div class="card card-width-18 ms-4 my-2 category_side">
+                <div class="card-body  ">
+                  <strong class="card-title"><%= category.category.upcase %></strong>
+                  <p class="card-text"><%= category.content.capitalize %></p>
                   <%= link_to 'Show', category, class: "btn btn-outline-primary btn-sm" %>
+
                 </div>
               </div>
             <% end %>
@@ -27,7 +29,11 @@
       </div>
     </div>
   <br>
-  <%= link_to 'Add Category', new_category_path, class: "btn btn-primary ms-4" %>
+
+  <div class="d-flex justify-content-center"><%= link_to 'Add Category', new_category_path, class: "btn btn-primary ms-4 addcategorybtn" %></div>
+
+
+
 
   </div>
 </div>

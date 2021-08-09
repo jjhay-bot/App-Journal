@@ -19,7 +19,7 @@ RSpec.feature "CreateTasks", type: :feature do
       scenario 'redirects to show category page' do
         visit categories_path
         expect(page).to have_current_path categories_path
-        expect(page).to have_content('This is the category name')
+        expect(page).to have_content('This is the category name'.upcase)
         expect(page).to have_content('Show')
         click_link 'Show'
       end

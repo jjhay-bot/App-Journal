@@ -1,6 +1,14 @@
 <%= render "layouts/nav" %>
-<h1>New Category</h1>
+
+<br><br>
+<div class="d-flex justify-content-center">
+    <h2 class="mx-4 my-2">New Category</h1>
+</div>
+
+
 
 <%= render 'form', category: @category %>
 
-<%= link_to 'Back', categories_path %>
+<div class="d-flex justify-content-center">
+    <%= link_to 'Back', categories_path, class: "btn btn-outline-secondary mx-4" %>
+</div>

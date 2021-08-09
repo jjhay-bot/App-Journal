@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
+  <div class="form-signin mt-4">
+
+    <label for="formControlInput" class="form-label"><%= form.label :category %></label>
+    <%= form.text_field :category, class:"form-control", placeholder: 'Category name' %>
+
+    <br>
+
+    <label for="formControlInput" class="form-label"><%= form.label :content %></label>
+    <%= form.text_field :content, class:"form-control", placeholder: 'Category name' %>
+
+    <div class="d-flex justify-content-center" >
+      <%= form.submit 'Save Category', class: "btn btn-primary mt-4"%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Save Category'%>
-  </div>
 <% end %>

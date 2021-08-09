@@ -1,9 +1,14 @@
 <%= render "layouts/nav" %> 
-<h1>Task#new</h1>
-<p>Find me in app/views/task/new.html.erb</p>
+<br>
+
+<div class="d-flex justify-content-center">
+    <h2 class="mx-4 mt-4">Create Task</h2>
+</div>
+
+</div>
 
 <%= form_with model: [@category, @task ], local: true do |f| %>
-    <p>
+    <p class="d-flex justify-content-center">
         <% if @task.errors.any? %>
             <ul>
                 <% @task.errors.full_messages.each do |message| %>
@@ -12,29 +17,27 @@
             </ul>
         <% end %>
     </p>
+    <div class="form-signin mt-4 center_this">
 
-    <p>
-        <b><%= f.label :name, 'Task name:' %></b>
-        <%= f.text_field :name, placeholder: 'Task', class: 'name' %>
+    <p >
+        <div>
+            <b><%= f.label :name, 'Task name:', class:"form-label" %></b>
+        </div>
+        <%= f.text_field :name, placeholder: 'Task', class: 'name' ,class:"form-control"%>
     </p>
 
     <p>
-        <b><%= f.label :description, 'Task description:' %></b>
-        <%= f.text_field :description, placeholder: 'Description', class: 'description' %>
-    </p>
-
-    <!-- <p>
-        <b><%= f.label :status, 'Status:' %></b>
-        <%= f.text_field :status, placeholder: 'Status', class: 'name' %>
-    </p> -->
-
-    <p>
-        <b><%= f.label :schedule, 'Schedule:' %></b>
-        <%= f.text_field :schedule, placeholder: 'YYYY-MM-DD', class: 'description', type: "date" %>
+        <b><%= f.label :description, 'Task description:', class:"form-label" %></b>
+        <%= f.text_field :description, placeholder: 'Description', class:"form-control" %>
     </p>
 
     <p>
-        <%= f.submit "Add Task"  %>
+        <b><%= f.label :schedule, 'Schedule:', class:"form-label" %></b>
+        <%= f.text_field :schedule, placeholder: 'YYYY-MM-DD', class:"form-control", type: "date" %>
     </p>
+
+    <div class="d-flex justify-content-center" >
+        <%= f.submit 'Add Task', class: "btn btn-primary mt-4"%>
+    </div>
 
 <% end %>
