@@ -18,7 +18,7 @@ RSpec.describe "EditingCategoryTasks", type: :system do
 
     visit "/categories/#{Category.last.id}/tasks/#{Task.last.id}/edit"
 
-    fill_in "Name",	with: "Edited name" 
+    fill_in "name",	with: "Edited name" 
     fill_in 'Description', with: 'Edited Description'
     fill_in 'Schedule', with: '2021-08-09'
 
