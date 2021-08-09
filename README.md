@@ -1,14 +1,5 @@
-# README
+# Try this Journal App now!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version 6.0+
-
-* Install gem 'pg' and gem rspec-rails
-
-* Config postres password for safety
-
-*
+https://journal321.herokuapp.com/users/sign_in
