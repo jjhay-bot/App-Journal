@@ -1,6 +1,10 @@
 <h2 class="ms-4 mt-4">Tasks</h2>
+<br>
+
+<div class="d-flex justify-content-center">
+
 <% @task.each do |task| %>
-    <div class="card card-width-18 ms-4">
+    <div class="card card-width-18 mx-2">
       <div class="card-body">
         <div class="card-title"><%= task.name %></div>
         <div class="card-text"><%= task.description %></div>
@@ -12,5 +16,8 @@
     </div>
 <% end %>
   
+
+</div>
+
 
 
