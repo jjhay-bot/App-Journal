@@ -1,4 +1,4 @@
-<div class="container cover">
+<div class="container cover px-2">
   <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
       <li data-bs-target="#carouselDark" data-bs-slide-to="0" class="active"></li>
@@ -28,9 +28,9 @@
 </div>
 
 <div class="container">
-  <div class="d-flex justify-content-center my-4"> 
+  <div class="d-flex mt-4 mx-4 rowtoday"> 
     <% @tasks.each do |task| %>
-      <div class="card card-width-18 ms-4">
+      <div class="card card-width-18 mx-2 my-2">
         <div class="card-body ">
           <div class="card-title"><strong><%= task.name.upcase %></strong></div>
           <div class="card-text text-muted"><%= task.description %></div>
