@@ -58,6 +58,11 @@
   justify-content: center;
 }
 
+.logout_now {
+  position: absolute;
+  right: 0;
+
+}
 
 
 @media only screen and (max-width: 1300px) {
