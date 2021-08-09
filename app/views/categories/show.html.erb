@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
+<%= render "layouts/nav" %>
+<p id="notice" class="ms-4"><%= notice %></p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @category.category %>
-</p>
+<div class="ms-4 mb-3 row">
+  <label class="col-sm-2 col-form-label">Category</label>
+  <div class="col-sm-10"><%= @category.category %></div>
+</div>
+<div class="ms-4 mb-3 row">
+  <label class="col-sm-2 col-form-label">Description</label>
+  <div class="col-sm-10"><%= @category.content %></div>
+</div>
+<div class="form-field ms-4">
+  <%= link_to 'Edit', edit_category_path(@category),class: "btn btn-outline-primary" %> 
+  <%= link_to 'Back', categories_path,class: "btn btn-outline-secondary" %> 
+  <%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-outline-danger" %>
+</div>
 
-<p>
-  <!-- content => Description  -->
-  <strong>Description:</strong>   
-  <%= @category.content %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %> |
-<%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' } %>
-
-
-<br><br><hr><br>
-
-<!-- <h2>RENDER TASK/INDEX here </h2> -->
 <%= render 'tasks/task', category: @category %>
-
-<br>
-<%= link_to 'Add new task',  new_category_task_path(@category) %>
+<%= link_to 'Add new task',  new_category_task_path(@category),class: "btn btn-primary ms-4 mt-4" %>
