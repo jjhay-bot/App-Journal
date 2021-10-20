@@ -2,7 +2,7 @@
 
 Web app written in Ruby on Rails which allows a user to add tasks, link them to categories and displays the tasks due today on the home page.
 
-[Live preview](https://journal321.herokuapp.com/users/sign_in)
+[Live preview](https://journal-app01.herokuapp.com/)
 
 ## 🛠 Tech Stacks:
 
